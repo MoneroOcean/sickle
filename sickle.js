@@ -14,11 +14,7 @@ function core(core_entry_point, opts) {
     );
     return {
         from: emitter,
-        to: {
-            emit: function(name, data) {
-                worker.sendToAddon(name, data);
-            }
-        }
+        to:   { emit: worker.sendToCpp }
     };
 }
 

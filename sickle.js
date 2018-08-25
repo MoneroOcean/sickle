@@ -14,7 +14,7 @@ function core(core_entry_point, opts) {
     );
     return {
         from: emitter,
-        emit_to: worker.sendToCpp
+        emit_to: function(name, data) { worker.sendToCpp(name, data); }
     };
 }
 

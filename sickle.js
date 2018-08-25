@@ -1,16 +1,14 @@
 "use strict";
 
-const multiHashing = require('cryptonight-hashing');
+const path   = require("path");
+const worker = require("streaming-worker");
 
-const data = new Buffer("7000000001e980924e4e1109230383e66d62945ff8e749903bea4336755c00000000000051928aff1b4d72416173a8c3948159a09a73ac3bb556aa6bfbcad1a85da7f4c1d13350531e24031b939b9e2b", "hex");
+const addon_path  = path.join(__dirname, "node_modules/sickle_core/build/Release/sickle_core.node");
+const sickle_core = worker(addon_path, { foo: "bar" });
 
-let worker = multiHashing.cryptonight_async_worker(data, 1, function(str) {
-  console.log("RUN: " + str);
-}, function() {
-  console.log("END");
+sickle_core.from.on('integer', function(value) {
+  console.log(value);
 });
 
-worker.update_worker("dddd", "eeeeeeee");
-
-let num = 0;
-setInterval(1000, function() { worker.update_worker("dddd" + ++num, "eeeeeeee"); });
+let i = 0;
+setInterval(1000, function() { sickle_core.to.emit("input" + ++i, "here's something"); })

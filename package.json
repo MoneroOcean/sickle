@@ -10,7 +10,6 @@
         "url":  "https://github.com/MoneroOcean/sickle.git"
     },
     "dependencies": {
-        "streaming-worker": "*",
-        "sickle_core":      "git+https://github.com/MoneroOcean/sickle_core.git"
+        "sickle_core": "git+https://github.com/MoneroOcean/sickle_core.git"
     }
 }

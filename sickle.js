@@ -11,4 +11,4 @@ sickle_core.from.on('integer', function(value) {
 });
 
 let i = 0;
-setInterval(function() { sickle_core.to.emit("input" + ++i, "here's something"); }, 1000);
+setInterval(function() { sickle_core.to.emit("input" + ++i, "here's something"); }, 100);

@@ -34,7 +34,7 @@ function core(cpp_entry_point, opts) {
 }
 
 const core_path   = path.join(__dirname, "node_modules/sickle_core/build/Release/sickle_core.node");
-const sickle_core = code(core_path, { foo: "bar" });
+const sickle_core = core(core_path, { foo: "bar" });
 
 sickle_core.from.on('integer', function(value) {
   console.log(value);

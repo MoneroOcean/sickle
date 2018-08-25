@@ -6,7 +6,7 @@ const events = require('events');
 function core(core_entry_point, opts) {
     const core_module = require(core_entry_point);
     var emitter = new events();
-    var worker = new core_module.StreamingWorker(
+    var worker = new core_module.AsyncWorker(
         function(event, value) { emitter.emit(event, value); }, 
         function () { emitter.emit("close"); }, 
         function(error) { emitter.emit("error", error); }, 

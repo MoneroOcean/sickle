@@ -1,0 +1,17 @@
+{
+    "name": "sickle",
+    "version": "0.0.1",
+    "author": {
+        "name": "MoneroOcean",
+        "email": "support@moneroocean.stream"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MoneroOcean/sickle.git"
+    },
+    "dependencies" : {
+        "streaming-worker": "*",
+        "sickle_core": "git+https://github.com/MoneroOcean/sickle_core.git",
+    }
+}
+

@@ -14,7 +14,7 @@ function core(core_entry_point, opts) {
     );
     return {
         from: emitter,
-        to:   { emit: worker.sendToCpp }
+        emit_to: worker.sendToCpp
     };
 }
 
@@ -27,5 +27,5 @@ sickle_core.from.on('integer', function(value) {
 
 let i = 0;
 setInterval(function() {
-    sickle_core.to.emit("input" + ++i, "here's something");
+    sickle_core.emit_to("input" + ++i, "here's something");
 }, 100);

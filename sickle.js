@@ -5,7 +5,7 @@ const events = require("events");
 
 function core(core_name, opts) {
     const core_path   = path.join(__dirname, "node_modules/" + core_name + "/build/Release/" + core_name + ".node");
-    const core_module = require(core_entry_point);
+    const core_module = require(core_path);
     var emitter = new events();
     var worker = new core_module.AsyncWorker(
         function(event, value) { emitter.emit(event, value); },

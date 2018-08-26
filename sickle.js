@@ -29,3 +29,5 @@ let i = 0;
 setInterval(function() {
     sickle_core.emit_to("input" + ++i, "here's something");
 }, 100);
+
+setTimer(function() { sickle_core.emit_to("close"); }, 5*1000);

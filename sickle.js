@@ -1,15 +1,16 @@
 "use strict";
 
 const path   = require("path");
-const events = require('events');
+const events = require("events");
 
-function core(core_entry_point, opts) {
+function core(core_name, opts) {
+    const core_path   = path.join(__dirname, "node_modules/" + core_name + "/build/Release/" + core_name + ".node");
     const core_module = require(core_entry_point);
     var emitter = new events();
     var worker = new core_module.AsyncWorker(
-        function(event, value) { emitter.emit(event, value); }, 
-        function () { emitter.emit("close"); }, 
-        function(error) { emitter.emit("error", error); }, 
+        function(event, value) { emitter.emit(event, value); },
+        function () { emitter.emit("close"); },
+        function(error) { emitter.emit("error", error); },
         opts
     );
     return {
@@ -18,8 +19,7 @@ function core(core_entry_point, opts) {
     };
 }
 
-const core_path   = path.join(__dirname, "node_modules/sickle-core/build/Release/sickle-core.node");
-const sickle_core = core(core_path, { foo: "bar" });
+const sickle_core = core("sickle-core", { foo: "bar" });
 
 sickle_core.from.on('integer', function(value) {
     console.log(value);

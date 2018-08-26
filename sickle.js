@@ -19,7 +19,7 @@ function core(core_name, opts) {
     };
 }
 
-const sickle_core = core("sickle-core", { foo: "bar" });
+let sickle_core = core("sickle-core", { foo: "bar" });
 
 sickle_core.from.on('integer', function(value) {
     console.log(value);
@@ -28,7 +28,12 @@ sickle_core.from.on('integer', function(value) {
 let i = 0;
 setInterval(function() {
     console.log("x4");
+
     sickle_core.emit_to("input" + ++i, "here's something");
 }, 100);
 
-setTimeout(function() { sickle_core.emit_to("close", "xxx"); }, 5*1000);
+setTimeout(function() {
+    const sickle_core2 = sickle_core;
+    sickle_core = null;
+    sickle_core2.emit_to("close", "xxx");
+}, 5*1000);

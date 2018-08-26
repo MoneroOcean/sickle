@@ -29,6 +29,10 @@ sickle_core.from.on("error", function(value) {
     console.error("ERROR: " + JSON.stringify(value));
 });
 
+sickle_core.from.on("close", function() {
+    console.log("CLOSE");
+});
+
 let i = 0;
 setInterval(function() {
     if (sickle_core) sickle_core.emit_to("job", {

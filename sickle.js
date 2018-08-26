@@ -22,14 +22,23 @@ function core(core_name, opts) {
 let sickle_core = core("sickle-core", { foo: "bar" });
 
 sickle_core.from.on("result", function(value) {
-    console.log(JSON.stringify(value));
+    console.log("RESULT: " + JSON.stringify(value));
+});
+
+sickle_core.from.on("error", function(value) {
+    console.error("ERROR: " + JSON.stringify(value));
 });
 
 let i = 0;
 setInterval(function() {
-    if (sickle_core) sickle_core.emit_to("input" + ++i, { "here's something": "xxxx" });
+    if (sickle_core) sickle_core.emit_to("job", {
+        "algo":     "cn/1",
+        "ways":     "2",
+        "blob_hex": "7f7ffeeaa0db054f15eca39c843cb82c15e5c5a7743e06536cb541d4e96e90ffd31120b7703aa90000000076a6f6e34a9977c982629d8fe6c8b45024cafca109eef92198784891e0df41bc03",
+        "target":   "10000000",
+    });
     else console.log("tick");
-}, 1000);
+}, 5*1000);
 
 setTimeout(function() {
     sickle_core.emit_to("close");

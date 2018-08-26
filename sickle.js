@@ -21,13 +21,13 @@ function core(core_name, opts) {
 
 let sickle_core = core("sickle-core", { foo: "bar" });
 
-sickle_core.from.on('integer', function(value) {
-    console.log(value);
+sickle_core.from.on("integer", function(value) {
+    console.log(JSON.stringify(value));
 });
 
 let i = 0;
 setInterval(function() {
-    if (sickle_core) sickle_core.emit_to("input" + ++i, "here's something");
+    if (sickle_core) sickle_core.emit_to("input" + ++i, { "here's something", "xxxx" });
     else console.log("tick");
 }, 1000);
 

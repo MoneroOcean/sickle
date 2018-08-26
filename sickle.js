@@ -47,4 +47,4 @@ setInterval(function() {
 setTimeout(function() {
     sickle_core.emit_to("close");
     sickle_core = null;
-}, 5*1000);
+}, 20*1000);

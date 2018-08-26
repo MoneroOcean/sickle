@@ -18,7 +18,7 @@ function core(core_entry_point, opts) {
     };
 }
 
-const core_path   = path.join(__dirname, "node_modules/sickle_core/build/Release/sickle_core.node");
+const core_path   = path.join(__dirname, "node_modules/sickle-core/build/Release/sickle-core.node");
 const sickle_core = core(core_path, { foo: "bar" });
 
 sickle_core.from.on('integer', function(value) {

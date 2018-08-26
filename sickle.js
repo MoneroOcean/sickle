@@ -30,4 +30,4 @@ setInterval(function() {
     sickle_core.emit_to("input" + ++i, "here's something");
 }, 100);
 
-setTimer(function() { sickle_core.emit_to("close"); }, 5*1000);
+setTimeout(function() { sickle_core.emit_to("close"); }, 5*1000);

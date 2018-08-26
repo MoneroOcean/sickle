@@ -28,8 +28,7 @@ sickle_core.from.on('integer', function(value) {
 let i = 0;
 setInterval(function() {
     console.log("x4");
-
-    sickle_core.emit_to("input" + ++i, "here's something");
+    if (sickle_core) sickle_core.emit_to("input" + ++i, "here's something");
 }, 100);
 
 setTimeout(function() {

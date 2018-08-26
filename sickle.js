@@ -3,11 +3,13 @@
 const path   = require("path");
 const events = require("events");
 
+var worker;
+
 function core(core_name, opts) {
     const core_path   = path.join(__dirname, "node_modules/" + core_name + "/build/Release/" + core_name + ".node");
     const core_module = require(core_path);
     var emitter = new events();
-    var worker = new core_module.AsyncWorker(
+    worker = new core_module.AsyncWorker(
         function(event, value) { emitter.emit(event, value); },
         function () { emitter.emit("close"); },
         function(error) { emitter.emit("error", error); },
@@ -34,5 +36,6 @@ setInterval(function() {
 setTimeout(function() {
     const sickle_core2 = sickle_core;
     sickle_core = null;
+    delete worker;
     sickle_core2.emit_to("close", "xxx");
 }, 5*1000);

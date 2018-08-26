@@ -28,7 +28,8 @@ sickle_core.from.on('integer', function(value) {
 let i = 0;
 setInterval(function() {
     if (sickle_core) sickle_core.emit_to("input" + ++i, "here's something");
-}, 100);
+    else console.log("tick");
+}, 1000);
 
 setTimeout(function() {
     sickle_core.emit_to("close", "xxx");

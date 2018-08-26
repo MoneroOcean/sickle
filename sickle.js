@@ -36,6 +36,6 @@ setInterval(function() {
 setTimeout(function() {
     const sickle_core2 = sickle_core;
     sickle_core = null;
-    worker = null;
     sickle_core2.emit_to("close", "xxx");
+    worker = null;
 }, 5*1000);

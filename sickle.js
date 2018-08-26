@@ -25,6 +25,10 @@ sickle_core.from.on("result", function(value) {
     console.log("RESULT: " + JSON.stringify(value));
 });
 
+sickle_core.from.on("hashrate", function(value) {
+    console.log("HASHRATE: " + JSON.stringify(value));
+});
+
 sickle_core.from.on("error", function(value) {
     console.error("ERROR: " + JSON.stringify(value));
 });
@@ -45,7 +49,7 @@ setInterval(function() {
     else console.log("tick");
 }, 5*1000);
 
-setTimeout(function() {
-    sickle_core.emit_to("close");
-    sickle_core = null;
-}, 20*1000);
+//setTimeout(function() {
+//    sickle_core.emit_to("close");
+//    sickle_core = null;
+//}, 20*1000);
